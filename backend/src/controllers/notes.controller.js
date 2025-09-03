@@ -1,5 +1,5 @@
 import Note from "../../models/Note.js";
-
+// Fetching all the notes 
 export async function getAllNotes(_, res) {
   try {
     const notes = await Note.find().sort({ createdAt: -1 });
@@ -10,7 +10,7 @@ export async function getAllNotes(_, res) {
     res.status(500).json({ message: "Internal server Error" });
   }
 }
-
+// Fetching a single note by it's id
 export async function getNotebyId(req, res) {
   try {
     const fetchNote = await Note.findById(req.params.id);
@@ -20,7 +20,7 @@ export async function getNotebyId(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
-
+// creating a note - POST request
 export async function createNote(req, res) {
   try {
     const { title, content } = req.body;
@@ -50,7 +50,7 @@ export async function updateNote(req, res) {
     res.status(500).json({ message: "Internal server Error" });
   }
 }
-
+// Delete note by its ID
 export async function deleteNote(req, res) {
   try {
     const deletedNote = await Note.findByIdAndDelete(req.params.id);
