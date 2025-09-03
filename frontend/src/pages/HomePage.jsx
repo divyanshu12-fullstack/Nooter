@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchNotes, deleteNote } from "../api";
+import { fetchNotes, deleteNote, updateNote } from "../api";
 import { Box, Button, Grid, GridItem, Heading, VStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import NoteCard from "../components/NoteCard";
@@ -21,6 +21,11 @@ const HomePage = () => {
     loadNotes(); // refresh list after delete
   }
 
+  async function handleUpdate(id, note) {
+    await updateNote(id, note);
+    loadNotes();
+  }
+
   return (
     <Box p={6}>
       <Grid
@@ -40,6 +45,7 @@ const HomePage = () => {
               content={note.content}
               date={note.createdAt}
               onDelete={handleDelete}
+              onUpdate={handleUpdate}
             />
           </GridItem>
         ))}
