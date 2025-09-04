@@ -9,7 +9,7 @@
 - Here the contains the seperate running backend and frontend services,
 - this makes them to be started seperately
 
-### After download the Nooter App on your machine follow - 
+### After downloading the Nooter App on your machine follow these steps - 
 
 ## - In Backend - in the powershell put ->  cd .\backend\
 - Once in Backend -> npm install -> npm run dev
@@ -21,9 +21,10 @@
     "content": "content2"
 }
 - Note to Test Delete and Post the base URL most follow /id of a note
+### - All the requirements + all the extras(except deployment) has been met, like id and time and date feature etc
 
 ## - For Frontend -> cd .\frontend\  -> npm install -> npm run dev
 - Frontend runs on  http://localhost:5173/
 ###- Note: This frontend is made to compliment the backend, not the main highlight of the work
 Once both backend and frontend are up and running use  http://localhost:5173/ to test my site
-#### Thanks for reading this far
+#### Thanks for reading this far.
