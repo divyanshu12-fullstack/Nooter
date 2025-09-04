@@ -17,7 +17,6 @@ function Navbar() {
         flexDir={{ base: "column", sm: "row" }}
         gap={{ base: 3, sm: 0 }}
       >
-        {/* Logo / Title */}
         <Text
           fontSize={{ base: "20px", sm: "24px", md: "28px" }}
           fontWeight="bold"
@@ -28,8 +27,6 @@ function Navbar() {
         >
           <Link to="/">Nooter 📒</Link>
         </Text>
-
-        {/* Actions */}
         <Stack
           direction="row"
           spacing={{ base: 2, md: 3 }}

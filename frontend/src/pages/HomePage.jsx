@@ -18,7 +18,7 @@ const HomePage = () => {
 
   async function handleDelete(id) {
     await deleteNote(id);
-    loadNotes(); // refresh list after delete
+    loadNotes();
   }
 
   return (
