@@ -3,18 +3,19 @@ import Note from "../../models/Note.js";
 export async function getAllNotes(_, res) {
   try {
     const notes = await Note.find().sort({ createdAt: -1 });
-    // .json(notes) sends the notes array as a JSON response.
     res.status(200).json(notes);
   } catch (err) {
     console.error("Error in get all notes Controller", err);
     res.status(500).json({ message: "Internal server Error" });
   }
 }
-// Fetching a single note by it's id
+// Fetching a single note by it's id ,
+// Not used in frontend but can be tested via Postman
 export async function getNotebyId(req, res) {
   try {
     const fetchNote = await Note.findById(req.params.id);
     if (!fetchNote) return res.status(404).json({ message: "Note not found" });
+    return res.status(200).json(fetchNote);
   } catch (error) {
     console.log("Error in getNoteBy Id Controller ", error);
     res.status(500).json({ message: "Internal server error" });
@@ -32,6 +33,7 @@ export async function createNote(req, res) {
     res.status(500).json({ message: "Internal server Error" });
   }
 }
+
 // Update Method - This is using the Id of note
 // it search by id and then updates the title or content 
 // whatever is passed, new true ensures updated note is returned
@@ -50,6 +52,7 @@ export async function updateNote(req, res) {
     res.status(500).json({ message: "Internal server Error" });
   }
 }
+
 // Delete note by its ID
 export async function deleteNote(req, res) {
   try {

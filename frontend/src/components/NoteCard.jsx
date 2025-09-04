@@ -1,7 +1,30 @@
-import { Box, Text, Button, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Button,
+  Stack,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalFooter,
+  useDisclosure,
+  ModalHeader,
+  ModalBody,
+  Input,
+  Textarea,
+} from "@chakra-ui/react";
+import { useState } from "react";
 import { formatDateTime } from "../utils/formatDate";
 
 const NoteCard = ({ id, title, content, date, onDelete, onUpdate }) => {
+  const [newTitle, setNewTitle] = useState(title);
+  const [newContent, setNewContent] = useState(content);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleSave = () => {
+    onUpdate(id, { title: newTitle, content: newContent });
+    onClose();
+  };
   return (
     <Box
       w="300px"
@@ -9,7 +32,7 @@ const NoteCard = ({ id, title, content, date, onDelete, onUpdate }) => {
       shadow="md"
       borderRadius="xl"
       p={5}
-      bg="cyan.100"
+      bg="whiteAlpha.900"
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
@@ -32,10 +55,35 @@ const NoteCard = ({ id, title, content, date, onDelete, onUpdate }) => {
         <Button size="sm" colorScheme="red" onClick={() => onDelete(id)}>
           Delete
         </Button>
-        <Button size="sm" colorScheme="blue" onClick={onUpdate}>
+        <Button size="sm" colorScheme="blue" onClick={onOpen}>
           Update
         </Button>
       </Stack>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Edit Note</ModalHeader>
+          <ModalBody>
+            <Input
+              mb={3}
+              value={newTitle}
+              placeholder={title}
+              onChange={(e) => setNewTitle(e.target.value)}
+            />
+            <Textarea
+              value={newContent}
+              placeholder={content}
+              onChange={(e) => setNewContent(e.target.value)}
+            />
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" onClick={handleSave}>
+              Save
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 };

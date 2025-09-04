@@ -5,6 +5,7 @@ import { connectDB } from "./config/db.js";
 import path from "path";
 import cors from "cors";
 
+
 dotenv.config();
 
 const app = express();
@@ -21,27 +22,15 @@ if (process.env.NODE_ENV !== "production") {
 
 app.use('/api/notes', notesRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "frontend/dist")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "frontend/dist/index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.json({ message: "API is running in development mode" });
-  });
-}
-
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-      if (process.env.NODE_ENV !== "production") {
-        console.log(`API available at: http://localhost:${PORT}`);
-      }
+      console.log(`http://localhost:${PORT}/api/notes/`);
     });
   })
   .catch((err) => {
     console.error("Failed to connect to the database: ", err);
     process.exit(1);
   });
+
+

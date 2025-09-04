@@ -27,6 +27,7 @@ function Navbar() {
         >
           <Link to="/">Nooter 📒</Link>
         </Text>
+
         <Stack
           direction="row"
           spacing={{ base: 2, md: 3 }}
