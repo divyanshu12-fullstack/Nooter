@@ -1,12 +1,13 @@
-const API_BASE = "http://localhost:5001/api";
+// frontend/src/api.js
+const API_BASE = import.meta.env.VITE_API_BASE || '';
 
 export async function fetchNotes() {
-  const res = await fetch(`${API_BASE}/notes`);
+  const res = await fetch(`${API_BASE}/api/notes`);
   return res.json();
 }
 
 export async function createNote(note) {
-  const res = await fetch(`${API_BASE}/notes`, {
+  const res = await fetch(`${API_BASE}/api/notes`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(note),
@@ -15,14 +16,14 @@ export async function createNote(note) {
 }
 
 export async function deleteNote(id) {
-  const res = await fetch(`${API_BASE}/notes/${id}`, {
+  const res = await fetch(`${API_BASE}/api/notes/${id}`, {
     method: "DELETE",
   });
   return res.json();
 }
 
 export async function updateNote(id, note) {
-  const res = await fetch(`${API_BASE}/notes/${id}`, {
+  const res = await fetch(`${API_BASE}/api/notes/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(note),

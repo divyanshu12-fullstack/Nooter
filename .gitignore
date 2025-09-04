@@ -1,2 +1,16 @@
-.env
 node_modules
+
+.env
+./Frontend/node_modules
+
+dist
+dist-ssr
+
+logs
+*.log
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
