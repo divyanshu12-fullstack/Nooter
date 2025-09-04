@@ -4,7 +4,7 @@
 - The Website is MERN stack based i.e Express as server, React in frontend and MongoDB as Database
 - Here Chakara-UI has been used for a responsive(Servicable) UI.
 - At first I was thinking to build a Complete website where integration of backend and frontend could have been more proper
-- But after encountering some constant faild deployment on Render, My plans were hindered
+- But after encountering some constant failed deployment on Render, My plans were hindered
 
 - Here the contains the seperate running backend and frontend services,
 - this makes them to be started seperately
@@ -25,6 +25,6 @@
 
 ## - For Frontend -> cd .\frontend\  -> npm install -> npm run dev
 - Frontend runs on  http://localhost:5173/
-###- Note: This frontend is made to compliment the backend, not the main highlight of the work
+###- Note: This frontend is made to complement the backend, not the main highlight of the work
 Once both backend and frontend are up and running use  http://localhost:5173/ to test my site
 #### Thanks for reading this far.
